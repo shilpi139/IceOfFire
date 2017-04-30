@@ -1,0 +1,1 @@
+var myApp = angular.module("bookApp", ['ngRoute', 'ngAnimate', 'angularUtils.directives.dirPagination', 'angular-scroll-animate']);

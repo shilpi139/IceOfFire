@@ -1,0 +1,65 @@
+<html lang="en" ng-app="bookApp">
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<base href="/">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+		<style>
+			.not-visible {
+				visibility: hidden;
+		  	}
+		</style>
+	</head>
+	<body>
+		<!-- Nav bar starts-->
+		<<div class="navbar navbar-inverse ">
+		    <div class="container">
+		        <!-- Header -->
+		        <div class="navbar-header">
+		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="width: 50px;">
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		            <a class="navbar-brand" href="/">Ice Of Fire</a>
+		        </div>
+		        <!-- Navbar Links -->
+		        <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+		            <ul class="nav navbar-nav navbar-right">
+		                <li class="active"><a href="/">Home</a></li>
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+		<!--Nav bar ends -->
+
+		<!-- Main Content -->
+	    <div class="container">
+	        <div class="row">
+	            <div ng-view></div>
+	        </div> 
+	    </div>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.js"></script>
+		<script type="text/javascript" src="js/angular-scroll-animate.js"></script>
+		<script type="text/javascript" src="angular/app.js"></script>
+		<script type="text/javascript" src="angular/directives/book.js"></script>
+		<script type="text/javascript" src="angular/services/services.js"></script>
+		<script type="text/javascript" src="angular/controllers/controller.js"></script>
+		<script type="text/javascript" src="angular/routes.js"></script>
+		<script type="text/javascript" src="js/jquery.min.1.7.js"></script>
+		<script type="text/javascript" src="http://malsup.github.io/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="js/dirPagination.js"></script>
+	</body>
+</html>

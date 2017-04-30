@@ -1,0 +1,295 @@
+<div class="single-details" ng-show="singleDetail.type == 'books'">
+	<div class="panel panel-primary" style="margin : 15px;">
+		<div class="panel-heading">
+			<h3 class="panel-title text-center text-uppercase">
+				<a href back-button style="float: left; text-decoration: none;"><i class="glyphicon glyphicon-circle-arrow-left""></i>&nbsp;&nbsp;Go Back</a>
+				<strong>{{singleDetail.details.name}}</strong>
+			</h3>
+		</div>
+	</div>
+	<div class="panel panel-primary" style="margin : 15px;">
+		<div class="panel-body" style="padding: 0px !important;">
+			<h4 class="text-center"><strong>Basic Details</strong></h4>
+			<div class="col-sm-6 hidden-xs">
+				<ul class="list-group">
+				    <li class="list-group-item"><strong>Author</strong> : &nbsp;&nbsp;{{singleDetail.details.authors[0]}}</li>
+				    <li class="list-group-item"><strong>Number Of Pages</strong> : &nbsp;&nbsp;{{singleDetail.details.numberOfPages}}</li>
+				    <li class="list-group-item"><strong>Publisher</strong> : &nbsp;&nbsp;{{singleDetail.details.publisher}}</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 hidden-xs">
+				<ul class="list-group">
+					<li class="list-group-item"><strong>Isbn</strong> : &nbsp;&nbsp;{{singleDetail.details.isbn}}</li>
+				    <li class="list-group-item"><strong>Country</strong> : &nbsp;&nbsp;{{singleDetail.details.country}}
+				    </li>
+				    <li class="list-group-item"><strong>Media Type</strong> : &nbsp;&nbsp;{{singleDetail.details.mediaType}}</li>
+				</ul>
+			</div>
+			<ul class="list-group visible-xs">
+				<li class="list-group-item"><strong>Author</strong> : &nbsp;&nbsp;{{singleDetail.details.authors[0]}}</li>
+			    <li class="list-group-item"><strong>Number Of Pages</strong> : &nbsp;&nbsp;{{singleDetail.details.numberOfPages}}</li>
+			    <li class="list-group-item"><strong>Publisher</strong> : &nbsp;&nbsp;{{singleDetail.details.publisher}}
+			    </li>
+				<li class="list-group-item"><strong>Isbn</strong> : &nbsp;&nbsp;{{singleDetail.details.isbn}}</li>
+			    <li class="list-group-item"><strong>Country</strong> : &nbsp;&nbsp;{{singleDetail.details.country}}</li>
+			    <li class="list-group-item"><strong>Media Type</strong> : &nbsp;&nbsp;{{singleDetail.details.mediaType}}
+			    </li>
+			</ul>
+		</div>
+	</div>
+ 	<!-- Characters Description-->
+ 	<div ng-show="singleDetail.hasCharacters">
+ 		<div class="panel panel-primary" style="margin : 15px;">
+		 	<div class="panel-heading">
+				<h3 class="panel-title text-center text-uppercase"><strong>Character In the book</strong></h3>
+			</div>
+			<div class="showSpinner">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+		 	<div class="panel-body">
+		 		<div class="row">
+			 		<div class="col-xs-12">
+		               <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true" class="pull-right"></dir-pagination-controls>
+		            </div>
+	            </div>
+		 		<div class="row">
+			 		<div class="col-sm-3" class="animate-repeat" dir-paginate="data in singleDetail.singleCharDetails| itemsPerPage : 48">
+						<div class="panel panel-primary" style="border-radius: 10px;border: 2px solid;">
+							<a ng-href="/singleDetail/{{data.type}}/{{data.characterNumber}}" style="color: black;text-decoration: none;">
+								<div class="panel-body main-block" style="height: 63px;">
+									<h6 class="card-title text-uppercase text-center"><strong class="title">{{data.name}}</strong></h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+ 	<!-- Pov Characters Description-->
+ 	<div ng-show="singleDetail.hasPovCharacters">
+ 		<div class="panel panel-primary" style="margin : 15px;">
+		 	<div class="panel-heading">
+				<h3 class="panel-title text-center text-uppercase"><strong> Pov Character's In the book</strong></h3>
+			</div>
+		 	<div class="panel-body">
+		 		<div class="row">
+			 			<div class="col-sm-3" class="animate-repeat" ng-repeat="data in singleDetail.singlePovCharDetails">
+						<div class="panel panel-primary" style="border-radius: 10px;border: 2px solid;">
+							<a ng-href="/singleDetail/{{data.type}}/{{data.characterNumber}}" style="color: black;text-decoration: none;">
+								<div class="panel-body main-block" style="height: 63px;">
+									<h6 class="card-title text-uppercase text-center"><strong class="title">{{data.name}}</strong></h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+</div>
+
+<!-- characters single detail -->
+<div class="single-details" ng-show="singleDetail.type == 'characters'">
+	<div class="panel panel-primary" style="margin : 15px;">
+		<div class="panel-heading">
+			<h3 class="panel-title text-center text-uppercase">
+				<a href back-button style="float: left; text-decoration: none;"><i class="glyphicon glyphicon-circle-arrow-left""></i>&nbsp;&nbsp;Go Back</a>
+				<strong>{{singleDetail.details.name}}</strong>
+			</h3>
+		</div>
+	</div>
+	<div class="panel panel-primary" style="margin : 15px;">
+		<div class="panel-body" style="padding: 0px !important;">
+			<h4 class="text-center"><strong>Basic Details</strong></h4>
+			<div class="col-sm-6 hidden-xs">
+				<ul class="list-group">
+				    <li class="list-group-item" ng-show="singleDetail.details.gender"><strong>Gender</strong> : &nbsp;&nbsp;{{singleDetail.details.gender}}</li>
+				    <li class="list-group-item" ng-show="singleDetail.details.culture"><strong>Culture</strong> : &nbsp;&nbsp;{{singleDetail.details.culture}}</li>
+				    <li class="list-group-item" ng-show="singleDetail.details.born"><strong>Born</strong> : &nbsp;&nbsp;{{singleDetail.details.born}}</li>
+					<li class="list-group-item" ng-show="singleDetail.details.tvSeries[0]"><strong>Tv Series</strong>:&nbsp;&nbsp;
+					<span ng-repeat="series in singleDetail.details.tvSeries">{{series}}{{$last ? '' : ', '}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 hidden-xs">
+				<ul class="list-group">
+					<li class="list-group-item" ng-show="singleDetail.details.aliases[0]"><strong>Aliases</strong>:&nbsp;&nbsp;
+					<span ng-repeat="aliase in singleDetail.details.aliases">{{aliase}}{{$last ? '' : ', '}}</span>
+					</li>
+					<li class="list-group-item" ng-show="singleDetail.details.titles[0]"><strong>Titles</strong>:&nbsp;&nbsp;
+					<span ng-repeat="title in singleDetail.details.titles">{{title}}{{$last ? '' : ', '}}</span>
+					</li>
+					<li class="list-group-item" ng-show="singleDetail.details.playedBy[0]"><strong>Played By</strong>:&nbsp;&nbsp;
+					<span ng-repeat="playedByWhom in singleDetail.details.playedBy">{{playedByWhom}}{{$last ? '' : ', '}}</span>
+					</li>
+				</ul>
+			</div>
+			<ul class="list-group visible-xs">
+				<li class="list-group-item" ng-show="singleDetail.details.gender"><strong>Gender</strong> : &nbsp;&nbsp;{{singleDetail.details.gender}}</li>
+			    <li class="list-group-item" ng-show="singleDetail.details.culture"><strong>Culture</strong> : &nbsp;&nbsp;{{singleDetail.details.culture}}</li>
+			    <li class="list-group-item" ng-show="singleDetail.details.born"><strong>Born</strong> : &nbsp;&nbsp;{{singleDetail.details.born}}</li>
+				</li>
+				<li class="list-group-item" ng-show="singleDetail.details.tvSeries[0]"><strong>Tv Series</strong>:&nbsp;&nbsp;
+					<span ng-repeat="series in singleDetail.details.tvSeries">{{series}}{{$last ? '' : ', '}}</span>
+				</li>
+				<li class="list-group-item" ng-show="singleDetail.details.aliases[0]"><strong>Aliases</strong>:&nbsp;&nbsp;
+					<span ng-repeat="aliase in singleDetail.details.aliases">{{aliase}}{{$last ? '' : ', '}}</span>
+				</li>
+				<li class="list-group-item" ng-show="singleDetail.details.titles[0]"><strong>Titles</strong>:&nbsp;&nbsp;
+					<span ng-repeat="title in singleDetail.details.titles">{{title}}{{$last ? '' : ', '}}</span>
+				</li>
+				<li class="list-group-item" ng-show="singleDetail.details.playedBy[0]"><strong>Played By</strong>:&nbsp;&nbsp;
+					<span ng-repeat="playedByWhom in singleDetail.details.playedBy">{{playedByWhom}}{{$last ? '' : ', '}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div ng-show="singleDetail.hasAllegiances">
+ 		<div class="panel panel-primary" style="margin : 15px;">
+		 	<div class="panel-heading">
+				<h3 class="panel-title text-center text-uppercase"><strong>Allegiances</strong></h3>
+			</div>
+		 	<div class="panel-body">
+		 		<div class="row">
+			 		<div class="col-sm-3" class="animate-repeat" ng-repeat="allegiances in singleDetail.allegiancesList">
+						<div class="panel panel-primary" style="border-radius: 10px;border: 2px solid;">
+							<a ng-href="/singleDetail/{{allegiances.type}}/{{allegiances.houseNumber}}" style="color: black;text-decoration: none;">
+								<div class="panel-body main-block" style="height: 63px;">
+									<h6 class="card-title text-uppercase text-center"><strong class="title">{{allegiances.name}}</strong></h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+
+ 	<div ng-show="singleDetail.hasBooks">
+ 		<div class="panel panel-primary" style="margin : 15px;">
+		 	<div class="panel-heading">
+				<h3 class="panel-title text-center text-uppercase"><strong>Books</strong></h3>
+			</div>
+		 	<div class="panel-body">
+		 		<div class="row">
+			 		<div class="col-sm-3" class="animate-repeat" ng-repeat="books in singleDetail.booksList">
+						<div class="panel panel-primary" style="border-radius: 10px;border: 2px solid;">
+							<a ng-href="/singleDetail/{{books.type}}/{{books.bookNumber}}" style="color: black;text-decoration: none;">
+								<div class="panel-body main-block" style="height: 63px;">
+									<h6 class="card-title text-uppercase text-center"><strong class="title">{{books.name}}</strong></h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+
+ 	<div ng-show="singleDetail.hasPovBooks">
+ 		<div class="panel panel-primary" style="margin : 15px;">
+		 	<div class="panel-heading">
+				<h3 class="panel-title text-center text-uppercase"><strong>Pov Books</strong></h3>
+			</div>
+		 	<div class="panel-body">
+		 		<div class="row">
+			 		<div class="col-sm-3" class="animate-repeat" ng-repeat="povBooks in singleDetail.povBooksList">
+						<div class="panel panel-primary" style="border-radius: 10px;border: 2px solid;">
+							<a ng-href="/singleDetail/{{povBooks.type}}/{{povBooks.bookNumber}}" style="color: black;text-decoration: none;">
+								<div class="panel-body main-block" style="height: 63px;">
+									<h6 class="card-title text-uppercase text-center"><strong class="title">{{povBooks.name}}</strong></h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+</div>
+
+
+<!-- house single detail code starts -->
+<div class="single-details" ng-show="singleDetail.type == 'houses'">
+	<div class="panel panel-primary" style="margin : 15px;">
+		<div class="panel-heading">
+			<h3 class="panel-title text-center text-uppercase">
+				<a href back-button style="float: left; text-decoration: none;"><i class="glyphicon glyphicon-circle-arrow-left""></i>&nbsp;&nbsp;Go Back</a>
+				<strong>{{singleDetail.details.name}}</strong>
+			</h3>
+		</div>
+	</div>
+
+	<div class="panel panel-primary" style="margin : 15px;">
+		<div class="panel-body" style="padding: 0px !important;">
+			<h4 class="text-center"><strong>Basic Details</strong></h4>
+			<div class="col-xs-12">
+				<ul class="list-group">
+					<li class="list-group-item" ng-show="singleDetail.details.region"><strong>Region</strong> : &nbsp;&nbsp;{{singleDetail.details.region}}</li>
+				    <li class="list-group-item" ng-show="singleDetail.details.coatOfArms"><strong>Coat Of Arms</strong> : &nbsp;&nbsp;{{singleDetail.details.coatOfArms}}</li>
+				    <li class="list-group-item" ng-show="singleDetail.details.words"><strong>Words</strong> : &nbsp;&nbsp;{{singleDetail.details.words}}</li>
+					<li class="list-group-item" ng-show="singleDetail.details.titles[0]"><strong>Titles</strong>:&nbsp;&nbsp;
+					<span ng-repeat="title in singleDetail.details.titles">{{title}}{{$last ? '' : ', '}}</span>
+					</li>
+					<li class="list-group-item" ng-show="singleDetail.details.seats[0]"><strong>Seats</strong>: &nbsp;&nbsp;
+					<span ng-repeat="seat in singleDetail.details.seats">{{seat}}{{$last ? '' : ', '}}</span>
+					</li>
+					<li class="list-group-item" ng-show="singleDetail.details.founded"><strong>Founded</strong> : &nbsp;&nbsp;{{singleDetail.details.founded}}</li>
+					<li class="list-group-item" ng-show="singleDetail.details.ancestralWeapons[0]"><strong>Ancestral Weapons</strong>: &nbsp;&nbsp;
+					<span ng-repeat="ancestralWeapon in singleDetail.details.ancestralWeapons">{{ancestralWeapon}}{{$last ? '' : ', '}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div ng-show="singleDetail.hasCadetBranches">
+ 		<div class="panel panel-primary" style="margin : 15px;">
+		 	<div class="panel-heading">
+				<h3 class="panel-title text-center text-uppercase"><strong>Cadet Branches</strong></h3>
+			</div>
+		 	<div class="panel-body">
+		 		<div class="row">
+			 		<div class="col-sm-3" class="animate-repeat" ng-repeat="cadetBranches in singleDetail.cadetBranchesList">
+						<div class="panel panel-primary" style="border-radius: 10px;border: 2px solid;">
+							<a ng-href="/singleDetail/{{cadetBranches.type}}/{{cadetBranches.houseNumber}}" style="color: black;text-decoration: none;">
+								<div class="panel-body main-block" style="height: 63px;">
+									<h6 class="card-title text-uppercase text-center"><strong class="title">{{cadetBranches.name}}</strong></h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+
+ 	<div ng-show="singleDetail.hasSwornMembers">
+ 		<div class="panel panel-primary" style="margin : 15px;">
+		 	<div class="panel-heading">
+				<h3 class="panel-title text-center text-uppercase"><strong>Sworn  Members</strong></h3>
+			</div>
+		 	<div class="panel-body">
+		 		<div class="row">
+			 		<div class="col-sm-3" class="animate-repeat" ng-repeat="swornMembers in singleDetail.swornMembersList">
+						<div class="panel panel-primary" style="border-radius: 10px;border: 2px solid;">
+							<a ng-href="/singleDetail/{{swornMembers.type}}/{{swornMembers.characterNumber}}" style="color: black;text-decoration: none;">
+								<div class="panel-body main-block" style="height: 63px;">
+									<h6 class="card-title text-uppercase text-center"><strong class="title">{{swornMembers.name}}</strong></h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+		 	</div>
+	 	</div>
+ 	</div>
+
+</div>
+<!-- house single detail code ends -->

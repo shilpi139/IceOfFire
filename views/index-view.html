@@ -1,0 +1,240 @@
+<!-- https://github.com/tushariscoolster/angular-clear-button -->
+<!-- <div class="spinner" ng-show="allData.showLoader"></div> -->
+<!-- show a loader on page load -->
+<div class="panel panel-primary book-block not-visible"  when-visible="allData.animateElementIn()" when-not-visible="allData.animateElementOut()" style="margin: 15px;">
+	<div class="panel-leftheading hidden-sm hidden-xs">
+    	<h3 class="panel-lefttitle text-center text-uppercase btitle bookTitle"><strong>Books</strong></h3>
+    </div>
+    <div class="panel-heading visible-sm visible-xs">
+    	<h3 class="panel-title text-center text-uppercase"><strong>Books</strong></h3>
+    </div>
+    <div class="panel-rightbody all-books">
+    	<div class="row">
+			<div class="btn-group dropdown pull-right" ng-show="allData.showFilterButton">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 			aria-expanded="false">Filter By <i class="glyphicon glyphicon-filter"></i>
+				</button>
+				<ul class="dropdown-menu">
+				    <li><a href="#" ng-click="allData.showTextField('name')">Name</a></li>
+				</ul>
+			</div>
+		</div>
+		<div ng-show="allData.showInputField">
+			<div class="form-group">
+       			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+					<input type="text" class="form-control" placeholder="{{allData.value}}" ng-show="allData.inputAttr === 'name'" ng-model="bookName" ng-keyup="$event.keyCode == 13 && allData.filterData('books',allData.inputAttr,bookName)" id="bookName"/>
+					<small ng-show="allData.inputAttr === 'name'">You can try from these too.. 
+						<a href="#" ng-click="allData.filterData('books', 'name', 'A Clash of Kings');"><i>A Clash of Kings</i></a>, 
+						<a href="#" ng-click="allData.filterData('books', 'name', 'A Storm of Swords');"><i>A Storm of Swords</i></a>,
+						<a href="#" ng-click="allData.filterData('books', 'name', 'The Princess and the Queen');"><i>The Princess and the Queen</i></a>
+					</small>
+
+					<span class="searchclear glyphicon glyphicon-remove" ng-click="allData.hideInputField(); bookName = ''"></span>
+				</div>
+				<br/>
+			</div>
+			<br/>
+			<p class="book-msgs displayNone text-center">Sorry, No Results Found.</p>
+			<hr style="width: 100%;"/>
+		</div>
+ 		<div class="row">
+ 			<div class="showLoader">
+				<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+			<p ng-hide="allData.finalList.length">Nothing here!</p>
+			<div class="col-sm-6 col-md-3" ng-repeat="data in allData.finalList | filter : search" ng-if="data.type === 'books'">
+				<book-card></book-card>
+			</div>
+		</div>
+ 	</div>
+</div>
+<br/>
+<br/>
+
+ <div class="panel panel-primary  char-block not-visible"  when-visible="allData.charAnimateElementIn()" when-not-visible="allData.charAnimateElementOut()" style="margin: 15px;">
+	<div class="panel-leftheading hidden-sm hidden-xs">
+		<h3 class="panel-lefttitle text-center text-uppercase ctitle charTitle"><strong>Characters</strong></h3>
+	</div>
+	<div class="panel-heading visible-sm visible-xs">
+    	<h3 class="panel-title text-center text-uppercase"><strong>Characters</strong></h3>
+    </div>
+	<div class="panel-rightbody all-characters" id="rightBody">
+		<div class="row">
+			<div class="btn-group dropdown pull-right" ng-show="allData.showCharFilterButton">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 			aria-expanded="false">Filter By <i class="glyphicon glyphicon-filter"></i>
+				</button>
+				<ul class="dropdown-menu">
+				    <li><a href="#" ng-click="allData.showField('name')">Name</a></li>
+				    <li><a href="#" ng-click="allData.showField('gender')">Gender</a></li>
+				    <li><a href="#" ng-click="allData.showField('culture')">Culture</a></li>
+				</ul>
+			</div>
+		</div>
+		<div ng-show="allData.showCharField">
+			<div class="form-group">
+       			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+					<input type="text" class="form-control" placeholder="{{allData.value}}" ng-show="allData.charAttr === 'name'" ng-model="filterValue" ng-keyup="$event.keyCode == 13 && allData.filterData('characters',allData.charAttr,filterValue)" id="charName"/>
+
+					<small ng-show="allData.charAttr === 'name'">You can try from these too.. 
+						<a href="#" ng-model="filterValue" ng-click="allData.filterData('characters', 'name', 'Balon Greyjoy');"><i>Balon Greyjoy</i></a>, 
+
+						<a href="#" ng-model="filterValue" ng-click="allData.filterData('characters', 'name', 'Chayle');"><i>Chayle</i></a>,
+
+						<a href="#" ng-model="filterValue" ng-click="allData.filterData('characters', 'name', 'Jon Snow');"><i>Jon Snow</i></a>
+					</small>
+
+					<input type="text" class="form-control" placeholder="{{allData.value}}" ng-show="allData.charAttr === 'gender'" ng-model="genderValue" ng-keyup="$event.keyCode == 13 && allData.filterData('characters',allData.charAttr,genderValue)" id="gender"/>
+
+					<small ng-show="allData.charAttr === 'gender'">You can try from these too.. 
+						<a href="#" ng-model="genderValue" ng-click="allData.filterData('characters', 'gender', 'Male');"><i>Male</i></a>, 
+
+						<a href="#" ng-model="genderValue" ng-click="allData.filterData('characters', 'gender', 'Female');"><i>Female</i></a>
+					</small>
+
+					<input type="text" class="form-control" placeholder="{{allData.value}}" ng-show="allData.charAttr === 'culture'" ng-model="cultureValue" ng-keyup="$event.keyCode == 13 && allData.filterData('characters',allData.charAttr, cultureValue)" id="culture"/>
+
+					<small ng-show="allData.charAttr === 'culture'">You can try from these too.. 
+						<a href="#" ng-model="cultureValue" ng-click="allData.filterData('characters','culture','Valemen');"><i>Valemen</i></a>,
+
+						<a href="#" ng-model="cultureValue" ng-click="allData.filterData('characters','culture','Northmen');"><i>Northmen</i></a>, 
+
+						<a href="#" ng-model="cultureValue" ng-click="allData.filterData('characters','culture','Rivermen');"><i>Rivermen</i></a>, 
+
+						<a href="#" ng-model="cultureValue" ng-click="allData.filterData('characters', 'culture', 'Myrish');"><i>Myrish</i></a>
+					</small>
+					
+					<span class="searchclear glyphicon glyphicon-remove" ng-click="allData.hideCharInputField(); filterValue = ''; genderValue = ''; cultureValue = ''"></span>
+				</div>
+				<br/>
+			    <!-- <input type="text" class="form-control" placeholder="{{allData.value}}" ng-keyup="$event.keyCode == 13 && allData.filterData(filterValue, allData.value)" ng-model="filterValue"/> -->
+			</div>
+			<br/>
+			<p class="form-msgs displayNone text-center">Sorry, No Results Found.</p>
+			<hr style="width: 100%;"/>
+		</div>
+		<div class="row">
+			<div class="showSpinner">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+			<div class="col-sm-6 col-md-3" ng-repeat="data in allData.finalList | filter:searchField" ng-if="data.type === 'characters'">
+				<div class="panel panel-primary" style="border-radius: 20px;border: 2px solid;">
+					<a ng-href="/singleDetail/{{data.type}}/{{data.characterNumber}}" style="color: black;text-decoration: none;">
+						<div class="panel-body main-block" style="height: 63px;">
+							<h6 class="card-title text-center"><strong class="title">{{data.name}}</strong></h6>
+						</div>
+					</a>
+				</div>
+			</div>
+			<nav aria-label="...">
+				<ul class="pager">
+				    <li class="previous" ng-hide="allData.hidePagination" ng-show="allData.prevPageNumber > 0"><a href="#" ng-click="allData.getAllCharacters(allData.prevPageNumber)"><span aria-hidden="true">&larr;</span>Older</a></li>
+				    <li class="next"><a href="" ng-hide="allData.hidePagination" ng-click="allData.getAllCharacters(allData.nextPageNumber)">Newer <span aria-hidden="true">&rarr;</span></a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="panel panel-primary house-block"  when-visible="allData.houseAnimateElementIn()"  style="margin: 15px;">
+	<div class="panel-leftheading hidden-sm hidden-xs">
+		<h3 class="panel-lefttitle text-center text-uppercase htitle houseTitle"><strong>Houses</strong></h3>
+	</div>
+	<div class="panel-heading visible-sm visible-xs">
+    	<h3 class="panel-title text-center text-uppercase"><strong>Houses</strong></h3>
+    </div>
+	<div class="panel-rightbody mpanel-body all-houses">
+	
+		<div class="row">
+			<div class="btn-group dropdown pull-right" ng-show="allData.showHouseFilterButton">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" 			aria-expanded="false">Filter By <i class="glyphicon glyphicon-filter"></i>
+				</button>
+				<ul class="dropdown-menu">
+				    <li><a href="#" ng-click="allData.displayHouseField('name')">Name</a></li>
+				    <li><a href="#" ng-click="allData.displayHouseField('region')">Region</a></li>
+				    <li><a href="#" ng-click="allData.displayHouseField('words')">Words</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div ng-show="allData.showHouseField">
+			<div class="form-group">
+       			<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+					<input type="text" class="form-control" placeholder="{{allData.value}}" ng-show="allData.houseAttr === 'name'" ng-model="houseName" ng-keyup="$event.keyCode == 13 && allData.filterData('houses',allData.houseAttr,houseName)" id="houseName"/>
+
+					<small ng-show="allData.houseAttr === 'name'">You can try from these too.. 
+						<a href="#" ng-model="houseName" ng-click="allData.filterData('houses', 'name', 'House Algood');"><i>House Algood</i></a>, 
+
+						<a href="#" ng-model="houseName" ng-click="allData.filterData('houses', 'name', 'House Baratheon of Dragonstone');"><i>House Baratheon of Dragonstone</i></a>,
+
+						<a href="#" ng-model="houseName" ng-click="allData.filterData('houses', 'name', 'House Ball');"><i>House Ball</i></a>
+					</small>
+
+					<input type="text" class="form-control" placeholder="{{allData.value}}" ng-show="allData.houseAttr === 'region'" ng-model="regionValue" ng-keyup="$event.keyCode == 13 && allData.filterData('houses',allData.houseAttr,regionValue)" id="region"/>
+
+					<small ng-show="allData.houseAttr === 'region'">You can try from these too.. 
+						<a href="#" ng-model="regionValue" ng-click="allData.filterData('houses', 'region', 'The Westerlands');"><i>The Westerlands</i></a>, 
+
+						<a href="#" ng-model="regionValue" ng-click="allData.filterData('houses', 'region', 'Dorne');"><i>Dorne</i></a>,
+
+						<a href="#" ng-model="regionValue" ng-click="allData.filterData('houses', 'region', 'The Vale');"><i>The Vale</i></a>,
+
+						<a href="#" ng-model="regionValue" ng-click="allData.filterData('houses', 'region', 'The Riverlands');"><i>The Riverlands</i></a>
+					</small>
+
+					<input type="text" class="form-control" placeholder="{{allData.value}}" ng-show="allData.houseAttr === 'words'" ng-model="wordsValue" ng-keyup="$event.keyCode == 13 && allData.filterData('houses',allData.houseAttr, wordsValue)" id="words"/>
+
+					<small ng-show="allData.houseAttr === 'words'">You can try from these too.. 
+						<a href="#" ng-model="wordsValue" ng-click="allData.filterData('houses','words','Valemen');"><i>No Foe May Pass</i></a>, 
+
+						<a href="#" ng-model="wordsValue" ng-click="allData.filterData('houses','words','Pride and Purpose');"><i>Pride and Purpose</i></a>, 
+
+						<a href="#" ng-model="wordsValue" ng-click="allData.filterData('houses','words','No Song so Sweet');"><i>No Song so Sweet</i></a>, 
+
+						<a href="#" ng-model="wordsValue" ng-click="allData.filterData('houses', 'words', 'Righteous in Wrath');"><i>Righteous in Wrath</i></a>
+					</small>
+
+					<span class="searchclear glyphicon glyphicon-remove" ng-click="allData.hideHouseInputField(); houseName = ''; regionValue = ''; wordsValue = ''"></span>
+				</div>
+				<br/>
+			</div>
+			<br/>
+			<p class="house-msgs displayNone text-center">Sorry, No Results Found.</p>
+			<hr style="width: 100%;"/>
+		</div>
+
+		<div class="row">
+			<div class="show-loader">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+			<div class="col-sm-6 col-md-3" ng-repeat="data in allData.finalList" ng-if="data.type === 'houses'">
+				<div class="panel panel-primary" style="border-radius: 20px;border: 2px solid;">
+					<a ng-href="/singleDetail/{{data.type}}/{{data.houseNumber}}" style="color: black;text-decoration: none;">
+						<div class="panel-body main-block" style="height: 63px;">
+							<h6 class="card-title text-center"><strong class="title">{{data.name}}</strong></h6>
+						</div>
+					</a>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row">
+			<nav aria-label="...">
+				<ul class="pager">
+				    <li class="previous" ng-hide="allData.hideIndex" ng-show="allData.prevIndex > 0"><a href="#" ng-click="allData.getAllHouses(allData.prevIndex)"><span aria-hidden="true">&larr;</span> Older</a></li>
+				    <li class="next"><a href="" ng-hide="allData.hideIndex"  ng-click="allData.getAllHouses(allData.nextIndex)">Newer <span aria-hidden="true">&rarr;</span></a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
